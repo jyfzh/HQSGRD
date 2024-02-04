@@ -1,0 +1,6 @@
+add_rules("mode.debug", "mode.release")
+add_requires("opencv")
+target("tag")
+    set_kind("binary")
+    add_files("HQSGRD/*.cpp")
+    add_packages("opencv")

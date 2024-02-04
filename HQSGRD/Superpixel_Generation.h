@@ -1,7 +1,7 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 #include <thread>
-#include<opencv2\opencv.hpp>  
+#include <opencv2/opencv.hpp>
 #include "priorityQueue.h"
 using namespace cv;
 using namespace std;
@@ -62,7 +62,7 @@ public:
 		int ClassSign = -1;
 		int flag;
 		int Lately_num = 0;
-		pixels_Local closestLocal = new  pixelsLocal[8];//Óë¸ÃÏñËØ¾àÀë×î½üµÄÁ½¸öµã
+		pixels_Local closestLocal = new  pixelsLocal[8];//ä¸è¯¥åƒç´ è·ç¦»æœ€è¿‘çš„ä¸¤ä¸ªç‚¹
 
 
 		int SuperpixelLabel = -1;
@@ -174,7 +174,7 @@ public:
 	}*Mark_Matri;
 
 	const int N8[8][2] =
-	{ 
+	{
 		{0,-1},
 		{-1,0},
 		{0,1},
@@ -200,11 +200,11 @@ public:
 
 	double  maxGNum = 0, minGNum = 0;
 	int classificationLable = 0;
-	
+
 	int SuperPixel_size = 0;
 
 	vector<vector<pixelsPointNew>>PixelMatrix;
-	
+
 	vector<vector<pixelsPoinT>>PixelMatrix_temp;
 
 	vector<vector<MarkMparameter>>Pixel_Information;
@@ -212,7 +212,7 @@ public:
 	vector<vector<MarkMatrix>>Superpixel_Label;
 
 	Seed_Point_T  Seed_Point;
-	
+
 	vector<vector<SeedPN>>Seed_label;
 
 
@@ -272,7 +272,7 @@ public:
 	//void Clustering(Mat LabImage, vector<vector<int>>& t_value);
 private:
 
-	
+
 
 };
 

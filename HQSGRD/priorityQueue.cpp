@@ -1,4 +1,4 @@
-#include"priorityQueue.h"
+#include "priorityQueue.h"
 NodeM priorityQueue::deQueue() {
 
 	NodeM data;
@@ -54,7 +54,7 @@ void priorityQueue::doubleSpace() {
 void priorityQueue::enQueue(NodeM data) {
 
 	if (currentSize == maxSize - 1) doubleSpace();
-	//向上过滤
+	//鍚戜笂杩囨护
 	int hole = ++currentSize;
 
 	for (; hole > 1 && data.totalNum < arrayN[hole / 2].totalNum; hole /= 2) {
