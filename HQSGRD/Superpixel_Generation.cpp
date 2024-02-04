@@ -5,6 +5,7 @@
 #include <string>
 using namespace cv;
 
+
 HQSGTRD::HQSGTRD()
 {
     for (int i = 0; i < 255; i++)
@@ -78,7 +79,7 @@ HQSGTRD::HQSGTRD()
 HQSGTRD::~HQSGTRD()
 {
 }
-void HQSGTRD::Superpixel_Segmentation(string image_file_name, string edge_file_name, int Superpixel_Num, string file_name, string Output_folder, vector<double>& run_time, int iteration_num, int Save_Image, int Save_Label_file)
+void HQSGTRD::Superpixel_Segmentation(string image_file_name, string edge_file_name, int Superpixel_Num, string file_name, vector<double>& run_time, int iteration_num, int Save_Image, int Save_Label_file)
 {
     Mat img = imread(image_file_name);
     Mat imgEge = imread(edge_file_name, 0);
@@ -225,7 +226,7 @@ void HQSGTRD::Superpixel_Segmentation(string image_file_name, string edge_file_n
 
         cout << Superpixel_Num << "\n";
 
-        Save_result(Finally_labelMat, file_name, Output_folder, final_label, Save_Image, Save_Label_file);
+        Save_result(Finally_labelMat, file_name);
 
     }
 
@@ -1410,7 +1411,7 @@ void HQSGTRD::Superpixel_Segmentation(string image_file_name, string edge_file_n
             //	int n = 0;
         {
             dQNum = 0;
-            differential_Quotient dQ = new  differentialQuotient[spixel_size*2];
+            differential_Quotient dQ = new  differentialQuotient[static_cast<int>(spixel_size)*2];
             for (int i = Seed_Point[n].LeftVerticesOne_x ; i <= Seed_Point[n].LeftVerticesTwo_x ; i++)
             {
                 for (int j = Seed_Point[n].LeftVerticesOne_y ; j <= Seed_Point[n].RightVerticesOne_y ; j++)
@@ -3107,28 +3108,20 @@ void HQSGTRD::Superpixel_Segmentation(string image_file_name, string edge_file_n
         }
         return;
     }
-    void HQSGTRD::Save_result(Mat Finally_labelMat, string file_name, string Output_folder,int final_label,int Save_Image,int Save_Label_file) {
-
+    void HQSGTRD::Save_result(Mat Finally_labelMat, string file_name) {
         string SkNum = std::to_string(kNum);
-
 
         if (Save_Image == 1) {
             Mat img = imread(FileName, 1);
             Label2Boundary((int*)Finally_labelMat.data, img, img);
-            string fileName = Output_folder + "\\" + file_name + "_" + SkNum + ".png";
+            string fileName = file_name + "_" + SkNum + ".png";
             cv::imwrite(fileName, img);
         }
 
-
         if (Save_Label_file == 1) {
-
             string TxtName = file_name + "_" + SkNum + "_HQSGRD.txt";
-
             //TxtName = TxtName + "_SASS.txt";
-
-            TxtName = Output_folder + "\\" + TxtName;
             ofstream out(TxtName);
-
             for (int i = 0; i < Finally_labelMat.rows; i++)
             {
                 for (int j = 0; j < Finally_labelMat.cols; j++)
@@ -3139,6 +3132,4 @@ void HQSGTRD::Superpixel_Segmentation(string image_file_name, string edge_file_n
             }
             out.close();
         }
-
-
     }

@@ -6,6 +6,8 @@
 using namespace cv;
 using namespace std;
 
+extern const int Save_Image;
+extern const int Save_Label_file;
 
 typedef struct pixelsLocal {
 	int x=-1;
@@ -219,7 +221,7 @@ public:
 	HQSGTRD();
 	~HQSGTRD();
 
-	void Superpixel_Segmentation(string image_file_name, string edge_file_name, int Superpixel_Num, string file_name, string Output_folder, vector<double>& run_time, int iteration_num, int Save_Image, int Save_Label_file);
+	void Superpixel_Segmentation(string image_file_name, string edge_file_name, int Superpixel_Num, string file_name, vector<double>& run_time, int iteration_num, int Save_Image, int Save_Label_file);
 
 	void Calculate_Contour_Information(Mat LabImage, vector<vector<int>>& t_value);
 
@@ -268,11 +270,10 @@ public:
 
 	void mergeSuperpixelsLable(int x, int y, int PreSign, int Aftersign);
 
-	void Save_result(Mat Finally_labelMat, string file_name, string Output_folder, int final_label, int Save_Image, int Save_Label_file);
+	void Save_result(Mat Finally_labelMat, string file_name);
 	//void Clustering(Mat LabImage, vector<vector<int>>& t_value);
 private:
 
 
 
 };
-
