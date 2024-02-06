@@ -1,5 +1,3 @@
 .xmake
-static
-result
 build
 compile_commands.json
