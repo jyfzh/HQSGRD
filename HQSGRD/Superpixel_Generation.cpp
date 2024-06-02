@@ -2884,7 +2884,10 @@ void HQSGTRD::Save_result(Mat Finally_labelMat, string file_name) {
   if (Save_Image == 1) {
     Mat img = imread(FileName, 1);
     Label2Boundary((int*)Finally_labelMat.data, img, img);
-    string fileName = file_name + "_" + SkNum + ".png";
+
+
+    string output_dir = "/home/jyf/source/uavid/hqs/";
+    string fileName = output_dir + SkNum + "/" + file_name;
     cv::imwrite(fileName, img);
   }
 
